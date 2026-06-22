@@ -1,0 +1,5 @@
+/Users/macbook/FAKS/GODINA-4/semestar-8/Signali/CompressionBenchmark/obj/Debug/net10.0/CompressionBenchmark.csproj.AssemblyReference.cache
+/Users/macbook/FAKS/GODINA-4/semestar-8/Signali/CompressionBenchmark/obj/Debug/net10.0/CompressionBenchmark.GeneratedMSBuildEditorConfig.editorconfig
+/Users/macbook/FAKS/GODINA-4/semestar-8/Signali/CompressionBenchmark/obj/Debug/net10.0/CompressionBenchmark.AssemblyInfoInputs.cache
+/Users/macbook/FAKS/GODINA-4/semestar-8/Signali/CompressionBenchmark/obj/Debug/net10.0/CompressionBenchmark.AssemblyInfo.cs
+/Users/macbook/FAKS/GODINA-4/semestar-8/Signali/CompressionBenchmark/obj/Debug/net10.0/CompressionBenchmark.csproj.CoreCompileInputs.cache

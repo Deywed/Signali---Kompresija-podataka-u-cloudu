@@ -1,0 +1,65 @@
+=============================================================================
+        CLOUD COST ESTIMATION REPORT - SILENCIA CORPUS (samba)              
+        Simulated Scale: 10,000 Files/Transfers | Duration: 12 Months       
+=============================================================================
+
+ALGORITHM: Gzip
+-------------------------------------------------
+  Original Size (Scale):    94.92 GB
+  Compressed Size (Scale):  36.28 GB
+  Original Storage Cost:    $26.20
+  Compressed Storage Cost:  $10.01
+  Original Transfer Cost:   $8.54
+  Compressed Transfer Cost: $3.27
+  -----------------------------------------------
+  TOTAL ESTIMATED SAVINGS:  $21.46
+=============================================================================
+
+ALGORITHM: Zstandard (Zstd)
+-------------------------------------------------
+  Original Size (Scale):    94.92 GB
+  Compressed Size (Scale):  34.23 GB
+  Original Storage Cost:    $26.20
+  Compressed Storage Cost:  $9.45
+  Original Transfer Cost:   $8.54
+  Compressed Transfer Cost: $3.08
+  -----------------------------------------------
+  TOTAL ESTIMATED SAVINGS:  $22.21
+=============================================================================
+
+ALGORITHM: LZ4 (Fast)
+-------------------------------------------------
+  Original Size (Scale):    94.92 GB
+  Compressed Size (Scale):  59.88 GB
+  Original Storage Cost:    $26.20
+  Compressed Storage Cost:  $16.53
+  Original Transfer Cost:   $8.54
+  Compressed Transfer Cost: $5.39
+  -----------------------------------------------
+  TOTAL ESTIMATED SAVINGS:  $12.82
+=============================================================================
+
+ALGORITHM: Snappy
+-------------------------------------------------
+  Original Size (Scale):    94.92 GB
+  Compressed Size (Scale):  59.05 GB
+  Original Storage Cost:    $26.20
+  Compressed Storage Cost:  $16.30
+  Original Transfer Cost:   $8.54
+  Compressed Transfer Cost: $5.31
+  -----------------------------------------------
+  TOTAL ESTIMATED SAVINGS:  $13.13
+=============================================================================
+
+ALGORITHM: Brotli
+-------------------------------------------------
+  Original Size (Scale):    94.92 GB
+  Compressed Size (Scale):  32.01 GB
+  Original Storage Cost:    $26.20
+  Compressed Storage Cost:  $8.84
+  Original Transfer Cost:   $8.54
+  Compressed Transfer Cost: $2.88
+  -----------------------------------------------
+  TOTAL ESTIMATED SAVINGS:  $23.03
+=============================================================================
+

@@ -1,0 +1,174 @@
+// Validating benchmarks:
+// ***** BenchmarkRunner: Start   *****
+// ***** Found 1 benchmark(s) in total *****
+// ***** Building 1 exe(s) in Parallel: Start   *****
+// start dotnet  restore --nodeReuse:false /p:UseSharedCompilation=false /p:Deterministic=true /p:Optimize=true /p:ArtifactsPath="/Users/macbook/FAKS/GODINA-4/semestar-8/Signali/CompressionBenchmark/bin/Release/net10.0/CompressionBenchmark-DefaultJob-1/" /p:OutDir="/Users/macbook/FAKS/GODINA-4/semestar-8/Signali/CompressionBenchmark/bin/Release/net10.0/CompressionBenchmark-DefaultJob-1/bin/Release/net10.0/" /p:OutputPath="/Users/macbook/FAKS/GODINA-4/semestar-8/Signali/CompressionBenchmark/bin/Release/net10.0/CompressionBenchmark-DefaultJob-1/bin/Release/net10.0/" /p:PublishDir="/Users/macbook/FAKS/GODINA-4/semestar-8/Signali/CompressionBenchmark/bin/Release/net10.0/CompressionBenchmark-DefaultJob-1/publish/" in /Users/macbook/FAKS/GODINA-4/semestar-8/Signali/CompressionBenchmark/bin/Release/net10.0/CompressionBenchmark-DefaultJob-1
+// command took 0.8 sec and exited with 0
+// start dotnet  build -c Release --no-restore --nodeReuse:false /p:UseSharedCompilation=false /p:Deterministic=true /p:Optimize=true /p:ArtifactsPath="/Users/macbook/FAKS/GODINA-4/semestar-8/Signali/CompressionBenchmark/bin/Release/net10.0/CompressionBenchmark-DefaultJob-1/" /p:OutDir="/Users/macbook/FAKS/GODINA-4/semestar-8/Signali/CompressionBenchmark/bin/Release/net10.0/CompressionBenchmark-DefaultJob-1/bin/Release/net10.0/" /p:OutputPath="/Users/macbook/FAKS/GODINA-4/semestar-8/Signali/CompressionBenchmark/bin/Release/net10.0/CompressionBenchmark-DefaultJob-1/bin/Release/net10.0/" /p:PublishDir="/Users/macbook/FAKS/GODINA-4/semestar-8/Signali/CompressionBenchmark/bin/Release/net10.0/CompressionBenchmark-DefaultJob-1/publish/" --output "/Users/macbook/FAKS/GODINA-4/semestar-8/Signali/CompressionBenchmark/bin/Release/net10.0/CompressionBenchmark-DefaultJob-1/bin/Release/net10.0/" in /Users/macbook/FAKS/GODINA-4/semestar-8/Signali/CompressionBenchmark/bin/Release/net10.0/CompressionBenchmark-DefaultJob-1
+// command took 3.68 sec and exited with 0
+// ***** Done, took 00:00:04 (4.51 sec)   *****
+// Found 1 benchmarks:
+//   CompressionPerformanceBenchmark.'Brotli Kompresija': DefaultJob
+
+// **************************
+// Benchmark: CompressionPerformanceBenchmark.'Brotli Kompresija': DefaultJob
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet CompressionBenchmark-DefaultJob-1.dll --anonymousPipes 122 123 --benchmarkName CompressionBenchmark.Benchmarks.CompressionPerformanceBenchmark.RunBrotli --job Default --benchmarkId 0 in /Users/macbook/FAKS/GODINA-4/semestar-8/Signali/CompressionBenchmark/bin/Release/net10.0/CompressionBenchmark-DefaultJob-1/bin/Release/net10.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.2 (10.0.2, 10.0.225.61305), Arm64 RyuJIT armv8.0-a
+// GC=Concurrent Workstation
+// HardwareIntrinsics=ArmBase+AdvSimd,AES,CRC32,DP,RDM,SHA1,SHA256 VectorSize=128
+// Job: DefaultJob
+
+OverheadJitting  1: 1 op, 137250.00 ns, 137.2500 us/op
+WorkloadJitting  1: 1 op, 190920834.00 ns, 190.9208 ms/op
+
+WorkloadPilot    1: 2 op, 268136875.00 ns, 134.0684 ms/op
+WorkloadPilot    2: 3 op, 388981417.00 ns, 129.6605 ms/op
+WorkloadPilot    3: 4 op, 454360375.00 ns, 113.5901 ms/op
+WorkloadPilot    4: 5 op, 549927000.00 ns, 109.9854 ms/op
+
+WorkloadWarmup   1: 5 op, 598740667.00 ns, 119.7481 ms/op
+WorkloadWarmup   2: 5 op, 588602583.00 ns, 117.7205 ms/op
+WorkloadWarmup   3: 5 op, 652761625.00 ns, 130.5523 ms/op
+WorkloadWarmup   4: 5 op, 586498417.00 ns, 117.2997 ms/op
+WorkloadWarmup   5: 5 op, 604273250.00 ns, 120.8547 ms/op
+WorkloadWarmup   6: 5 op, 603052667.00 ns, 120.6105 ms/op
+
+// BeforeActualRun
+WorkloadActual   1: 5 op, 598775375.00 ns, 119.7551 ms/op
+WorkloadActual   2: 5 op, 583091792.00 ns, 116.6184 ms/op
+WorkloadActual   3: 5 op, 561107250.00 ns, 112.2215 ms/op
+WorkloadActual   4: 5 op, 661074542.00 ns, 132.2149 ms/op
+WorkloadActual   5: 5 op, 633147292.00 ns, 126.6295 ms/op
+WorkloadActual   6: 5 op, 691935500.00 ns, 138.3871 ms/op
+WorkloadActual   7: 5 op, 577978417.00 ns, 115.5957 ms/op
+WorkloadActual   8: 5 op, 541549750.00 ns, 108.3100 ms/op
+WorkloadActual   9: 5 op, 543775750.00 ns, 108.7552 ms/op
+WorkloadActual  10: 5 op, 551410167.00 ns, 110.2820 ms/op
+WorkloadActual  11: 5 op, 542841833.00 ns, 108.5684 ms/op
+WorkloadActual  12: 5 op, 539918000.00 ns, 107.9836 ms/op
+WorkloadActual  13: 5 op, 541728042.00 ns, 108.3456 ms/op
+WorkloadActual  14: 5 op, 570037834.00 ns, 114.0076 ms/op
+WorkloadActual  15: 5 op, 553781542.00 ns, 110.7563 ms/op
+WorkloadActual  16: 5 op, 548816167.00 ns, 109.7632 ms/op
+WorkloadActual  17: 5 op, 541608042.00 ns, 108.3216 ms/op
+WorkloadActual  18: 5 op, 552750084.00 ns, 110.5500 ms/op
+WorkloadActual  19: 5 op, 534779458.00 ns, 106.9559 ms/op
+WorkloadActual  20: 5 op, 556625875.00 ns, 111.3252 ms/op
+WorkloadActual  21: 5 op, 535628333.00 ns, 107.1257 ms/op
+WorkloadActual  22: 5 op, 543247958.00 ns, 108.6496 ms/op
+WorkloadActual  23: 5 op, 534711167.00 ns, 106.9422 ms/op
+WorkloadActual  24: 5 op, 546005542.00 ns, 109.2011 ms/op
+WorkloadActual  25: 5 op, 539721000.00 ns, 107.9442 ms/op
+WorkloadActual  26: 5 op, 548814917.00 ns, 109.7630 ms/op
+WorkloadActual  27: 5 op, 540315875.00 ns, 108.0632 ms/op
+WorkloadActual  28: 5 op, 549239917.00 ns, 109.8480 ms/op
+WorkloadActual  29: 5 op, 542678666.00 ns, 108.5357 ms/op
+
+// AfterActualRun
+WorkloadResult   1: 5 op, 583091792.00 ns, 116.6184 ms/op
+WorkloadResult   2: 5 op, 561107250.00 ns, 112.2215 ms/op
+WorkloadResult   3: 5 op, 577978417.00 ns, 115.5957 ms/op
+WorkloadResult   4: 5 op, 541549750.00 ns, 108.3100 ms/op
+WorkloadResult   5: 5 op, 543775750.00 ns, 108.7552 ms/op
+WorkloadResult   6: 5 op, 551410167.00 ns, 110.2820 ms/op
+WorkloadResult   7: 5 op, 542841833.00 ns, 108.5684 ms/op
+WorkloadResult   8: 5 op, 539918000.00 ns, 107.9836 ms/op
+WorkloadResult   9: 5 op, 541728042.00 ns, 108.3456 ms/op
+WorkloadResult  10: 5 op, 570037834.00 ns, 114.0076 ms/op
+WorkloadResult  11: 5 op, 553781542.00 ns, 110.7563 ms/op
+WorkloadResult  12: 5 op, 548816167.00 ns, 109.7632 ms/op
+WorkloadResult  13: 5 op, 541608042.00 ns, 108.3216 ms/op
+WorkloadResult  14: 5 op, 552750084.00 ns, 110.5500 ms/op
+WorkloadResult  15: 5 op, 534779458.00 ns, 106.9559 ms/op
+WorkloadResult  16: 5 op, 556625875.00 ns, 111.3252 ms/op
+WorkloadResult  17: 5 op, 535628333.00 ns, 107.1257 ms/op
+WorkloadResult  18: 5 op, 543247958.00 ns, 108.6496 ms/op
+WorkloadResult  19: 5 op, 534711167.00 ns, 106.9422 ms/op
+WorkloadResult  20: 5 op, 546005542.00 ns, 109.2011 ms/op
+WorkloadResult  21: 5 op, 539721000.00 ns, 107.9442 ms/op
+WorkloadResult  22: 5 op, 548814917.00 ns, 109.7630 ms/op
+WorkloadResult  23: 5 op, 540315875.00 ns, 108.0632 ms/op
+WorkloadResult  24: 5 op, 549239917.00 ns, 109.8480 ms/op
+WorkloadResult  25: 5 op, 542678666.00 ns, 108.5357 ms/op
+// GC:  2 2 2 58806328 5
+// Threading:  0 0 5
+
+// AfterAll
+// Benchmark Process 55622 has exited with code 0.
+
+Mean = 109.777 ms, StdErr = 0.505 ms (0.46%), N = 25, StdDev = 2.527 ms
+Min = 106.942 ms, Q1 = 108.310 ms, Median = 108.755 ms, Q3 = 110.550 ms, Max = 116.618 ms
+IQR = 2.240 ms, LowerFence = 104.950 ms, UpperFence = 113.910 ms
+ConfidenceInterval = [107.884 ms; 111.670 ms] (CI 99.9%), Margin = 1.893 ms (1.72% of Mean)
+Skewness = 1.28, Kurtosis = 3.85, MValue = 2
+
+// ** Remained 0 (0.0%) benchmark(s) to run. Estimated finish 2026-06-22 22:46 (0h 0m from now) **
+// ***** BenchmarkRunner: Finish  *****
+
+// * Export *
+  BenchmarkDotNet.Artifacts/results/CompressionBenchmark.Benchmarks.CompressionPerformanceBenchmark-report.csv
+  BenchmarkDotNet.Artifacts/results/CompressionBenchmark.Benchmarks.CompressionPerformanceBenchmark-report-github.md
+  BenchmarkDotNet.Artifacts/results/CompressionBenchmark.Benchmarks.CompressionPerformanceBenchmark-report.html
+
+// * Detailed results *
+CompressionPerformanceBenchmark.'Brotli Kompresija': DefaultJob
+Runtime = .NET 10.0.2 (10.0.2, 10.0.225.61305), Arm64 RyuJIT armv8.0-a; GC = Concurrent Workstation
+Mean = 109.777 ms, StdErr = 0.505 ms (0.46%), N = 25, StdDev = 2.527 ms
+Min = 106.942 ms, Q1 = 108.310 ms, Median = 108.755 ms, Q3 = 110.550 ms, Max = 116.618 ms
+IQR = 2.240 ms, LowerFence = 104.950 ms, UpperFence = 113.910 ms
+ConfidenceInterval = [107.884 ms; 111.670 ms] (CI 99.9%), Margin = 1.893 ms (1.72% of Mean)
+Skewness = 1.28, Kurtosis = 3.85, MValue = 2
+-------------------- Histogram --------------------
+[105.808 ms ; 110.030 ms) | @@@@@@@@@@@@@@@@@
+[110.030 ms ; 112.386 ms) | @@@@@
+[112.386 ms ; 117.268 ms) | @@@
+---------------------------------------------------
+
+// * Summary *
+
+BenchmarkDotNet v0.15.8, macOS Tahoe 26.3 (25D125) [Darwin 25.3.0]
+Apple M1 Pro, 1 CPU, 8 logical and 8 physical cores
+.NET SDK 10.0.102
+  [Host]     : .NET 10.0.2 (10.0.2, 10.0.225.61305), Arm64 RyuJIT armv8.0-a
+  DefaultJob : .NET 10.0.2 (10.0.2, 10.0.225.61305), Arm64 RyuJIT armv8.0-a
+
+
+| Method              | Mean     | Error   | StdDev  | Gen0     | Gen1     | Gen2     | Allocated |
+|-------------------- |---------:|--------:|--------:|---------:|---------:|---------:|----------:|
+| 'Brotli Kompresija' | 109.8 ms | 1.89 ms | 2.53 ms | 400.0000 | 400.0000 | 400.0000 |  11.22 MB |
+
+// * Hints *
+Outliers
+  CompressionPerformanceBenchmark.'Brotli Kompresija': Default -> 4 outliers were removed (119.76 ms..138.39 ms)
+// * Config Issues *
+
+// * Warnings *
+Configuration
+  Summary -> The exporter HtmlExporter is already present in configuration. There may be unexpected results.
+
+// * Legends *
+  Mean      : Arithmetic mean of all measurements
+  Error     : Half of 99.9% confidence interval
+  StdDev    : Standard deviation of all measurements
+  Gen0      : GC Generation 0 collects per 1000 operations
+  Gen1      : GC Generation 1 collects per 1000 operations
+  Gen2      : GC Generation 2 collects per 1000 operations
+  Allocated : Allocated memory per single operation (managed only, inclusive, 1KB = 1024B)
+  1 ms      : 1 Millisecond (0.001 sec)
+
+// * Diagnostic Output - MemoryDiagnoser *
+
+
+// ***** BenchmarkRunner: End *****
+Run time: 00:00:22 (22.57 sec), executed benchmarks: 1
+
+Global total time: 00:00:27 (27.39 sec), executed benchmarks: 1
+// * Artifacts cleanup *
+Artifacts cleanup is finished

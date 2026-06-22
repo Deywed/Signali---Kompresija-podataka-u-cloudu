@@ -1,0 +1,35 @@
+using System;
+using System.Collections.Generic;
+using System.IO.Compression;
+using System.Linq;
+using System.Threading.Tasks;
+using CompressionBenchmark.Abstractions;
+
+namespace CompressionBenchmark.Strategies
+{
+    public class GzipStrategy : ICompressionStrategy
+    {
+        public string Name => "Gzip";
+
+        public byte[] Compress(byte[] data)
+        {
+            using var outputStream = new MemoryStream();
+            using (var gzipStream = new GZipStream(outputStream, CompressionMode.Compress,
+            leaveOpen: true))
+            {
+                gzipStream.Write(data, 0, data.Length);
+            }
+            return outputStream.ToArray();
+        }
+
+        public byte[] Decompress(byte[] compressedData)
+        {
+            using var inputStream = new MemoryStream(compressedData);
+            using var gzipStream = new GZipStream(inputStream,
+            CompressionMode.Decompress);
+            using var outputStream = new MemoryStream();
+            gzipStream.CopyTo(outputStream);
+            return outputStream.ToArray();
+        }
+    }
+}
