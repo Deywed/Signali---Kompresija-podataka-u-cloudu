@@ -6,35 +6,44 @@ using CompressionBenchmark.Strategies;
 
 namespace CompressionBenchmark.Benchmarks
 {
-    [MemoryDiagnoser] // Prati potrošnju RAM memorije
-    [HtmlExporter]    // Generiše uporedni HTML fajl
-    [MarkdownExporterAttribute.GitHub] // Generiše .md fajl spreman za GitHub/rad
+    [MemoryDiagnoser]
+    [HtmlExporter]
+    [MarkdownExporterAttribute.GitHub]
     public class CompressionPerformanceBenchmark
     {
         private byte[] _testData = null!;
 
-        // Unapred kompresovani podaci koji nam trebaju za test DEKOMRESIJE
+        // Unapred kompresovani podaci za test DEKOMRESIJE
         private byte[] _gzipCompressed = null!;
         private byte[] _zstdCompressed = null!;
         private byte[] _lz4Compressed = null!;
         private byte[] _snappyCompressed = null!;
         private byte[] _brotliCompressed = null!;
 
-        // Instanciranje svih strategija na jednom mestu
+        // Instanciranje strategija
         private readonly ICompressionStrategy _gzip = new GzipStrategy();
         private readonly ICompressionStrategy _zstd = new ZstdStrategy();
         private readonly ICompressionStrategy _lz4 = new Lz4Strategy();
         private readonly ICompressionStrategy _snappy = new SnappyStrategy();
         private readonly ICompressionStrategy _brotli = new BrotliStrategy();
 
+        // 1. OVDE ZADAJEŠ SVE FAJLOVE KOJE ŽELIŠ DA TESTIRAŠ ODJEDNOM
+        // BenchmarkDotNet će pročitati ove nazive i izvršiti testove za svaki ponaosob
+        [Params("Data/dickens", "Data/nci", "Data/reymont")]
+        public string FileName { get; set; } = null!;
+
         [GlobalSetup]
         public void Setup()
         {
-            // Pošto smo u .csproj podesili CopyToOutputDirectory, 
-            // fajl je sada garantovano pored izvršnog programa!
-            _testData = File.ReadAllBytes("Data/dickens"); // Učitavanje test fajla u bajt niz
+            // 2. Putanja se sada dinamički menja u zavisnosti od toga koji fajl je trenutno na redu
+            if (!File.Exists(FileName))
+            {
+                throw new FileNotFoundException($"Fajl nije pronađen na lokaciji: {FileName}. Proveri da li je u Data folderu.");
+            }
 
-            // Priprema kompresovanih nizova bajtova za test dekompresije
+            _testData = File.ReadAllBytes(FileName);
+
+            // Priprema kompresovanih nizova bajtova za trenutno aktivni fajl
             _gzipCompressed = _gzip.Compress(_testData);
             _zstdCompressed = _zstd.Compress(_testData);
             _lz4Compressed = _lz4.Compress(_testData);
@@ -43,6 +52,7 @@ namespace CompressionBenchmark.Benchmarks
         }
 
         // --- BENCHMARK TESTOVI ZA KOMPRESIJU ---
+        // Kod za metode ostaje POTPUNO ISTI, jer sve one koriste _testData koji se gore dinamički menja
 
         [Benchmark(Description = "GZIP - Compression")]
         public byte[] GzipCompress() => _gzip.Compress(_testData);

@@ -2,7 +2,7 @@
 <html lang='en'>
 <head>
 <meta charset='utf-8' />
-<title>CompressionBenchmark.Benchmarks.CompressionPerformanceBenchmark-20260622-230321</title>
+<title>CompressionBenchmark.Benchmarks.CompressionPerformanceBenchmark-20260625-212600</title>
 
 <style type="text/css">
 	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
@@ -22,18 +22,38 @@ Apple M1 Pro, 1 CPU, 8 logical and 8 physical cores
 <pre><code></code></pre>
 
 <table>
-<thead><tr><th>Method            </th><th>Mean</th><th>Error</th><th>StdDev</th><th>Gen0</th><th>Gen1</th><th>Gen2</th><th>Allocated</th>
+<thead><tr><th>Method            </th><th>FileName</th><th>Mean</th><th>Error</th><th>StdDev</th><th>Median</th><th>Gen0</th><th>Gen1</th><th>Gen2</th><th>Allocated</th>
 </tr>
-</thead><tbody><tr><td>&#39;GZIP - Compression&#39;</td><td>138.846 ms</td><td>2.4863 ms</td><td>2.0761 ms</td><td>-</td><td>-</td><td>-</td><td>11.71 MB</td>
-</tr><tr><td>&#39;Zstd - Compression&#39;</td><td>55.350 ms</td><td>0.9769 ms</td><td>0.8158 ms</td><td>-</td><td>-</td><td>-</td><td>11.41 MB</td>
-</tr><tr><td>&#39;LZ4 - Compression&#39;</td><td>32.323 ms</td><td>0.6173 ms</td><td>0.5472 ms</td><td>181.8182</td><td>181.8182</td><td>181.8182</td><td>26.49 MB</td>
-</tr><tr><td>&#39;Snappy - Compression&#39;</td><td>42.912 ms</td><td>0.4705 ms</td><td>0.4171 ms</td><td>750.0000</td><td>-</td><td>-</td><td>10.93 MB</td>
-</tr><tr><td>&#39;Brotli - Compression&#39;</td><td>121.055 ms</td><td>1.9951 ms</td><td>1.6660 ms</td><td>-</td><td>-</td><td>-</td><td>11.22 MB</td>
-</tr><tr><td>&#39;GZIP - Decompression&#39;</td><td>25.551 ms</td><td>0.4915 ms</td><td>0.5463 ms</td><td>500.0000</td><td>500.0000</td><td>500.0000</td><td>41.6 MB</td>
-</tr><tr><td>&#39;Zstd - Decompression&#39;</td><td>17.229 ms</td><td>0.3423 ms</td><td>0.8266 ms</td><td>468.7500</td><td>468.7500</td><td>468.7500</td><td>41.6 MB</td>
-</tr><tr><td>&#39;LZ4 - Decompression&#39;</td><td>9.334 ms</td><td>0.1824 ms</td><td>0.2617 ms</td><td>453.1250</td><td>453.1250</td><td>453.1250</td><td>41.6 MB</td>
-</tr><tr><td>&#39;Snappy - Decompression&#39;</td><td>22.659 ms</td><td>0.4522 ms</td><td>0.6036 ms</td><td>62.5000</td><td>62.5000</td><td>62.5000</td><td>9.72 MB</td>
-</tr><tr><td>&#39;Brotli - Decompression&#39;</td><td>24.667 ms</td><td>0.4926 ms</td><td>0.5059 ms</td><td>437.5000</td><td>437.5000</td><td>437.5000</td><td>41.6 MB</td>
+</thead><tbody><tr><td>&#39;GZIP - Compression&#39;</td><td>Data/dickens</td><td>144.972 ms</td><td>2.8907 ms</td><td>5.1383 ms</td><td>142.883 ms</td><td>-</td><td>-</td><td>-</td><td>11.71 MB</td>
+</tr><tr><td>&#39;Zstd - Compression&#39;</td><td>Data/dickens</td><td>56.373 ms</td><td>0.3425 ms</td><td>0.3204 ms</td><td>56.395 ms</td><td>-</td><td>-</td><td>-</td><td>11.41 MB</td>
+</tr><tr><td>&#39;LZ4 - Compression&#39;</td><td>Data/dickens</td><td>31.947 ms</td><td>0.3761 ms</td><td>0.3518 ms</td><td>32.032 ms</td><td>250.0000</td><td>250.0000</td><td>250.0000</td><td>26.49 MB</td>
+</tr><tr><td>&#39;Snappy - Compression&#39;</td><td>Data/dickens</td><td>43.082 ms</td><td>0.7082 ms</td><td>0.6278 ms</td><td>42.892 ms</td><td>750.0000</td><td>-</td><td>-</td><td>10.93 MB</td>
+</tr><tr><td>&#39;Brotli - Compression&#39;</td><td>Data/dickens</td><td>114.246 ms</td><td>2.1989 ms</td><td>5.0080 ms</td><td>112.043 ms</td><td>-</td><td>-</td><td>-</td><td>11.22 MB</td>
+</tr><tr><td>&#39;GZIP - Decompression&#39;</td><td>Data/dickens</td><td>24.279 ms</td><td>0.2417 ms</td><td>0.2019 ms</td><td>24.338 ms</td><td>437.5000</td><td>437.5000</td><td>437.5000</td><td>41.6 MB</td>
+</tr><tr><td>&#39;Zstd - Decompression&#39;</td><td>Data/dickens</td><td>17.898 ms</td><td>0.3545 ms</td><td>1.0396 ms</td><td>17.930 ms</td><td>468.7500</td><td>468.7500</td><td>468.7500</td><td>41.6 MB</td>
+</tr><tr><td>&#39;LZ4 - Decompression&#39;</td><td>Data/dickens</td><td>9.874 ms</td><td>0.1974 ms</td><td>0.3509 ms</td><td>9.876 ms</td><td>453.1250</td><td>453.1250</td><td>453.1250</td><td>41.6 MB</td>
+</tr><tr><td>&#39;Snappy - Decompression&#39;</td><td>Data/dickens</td><td>21.882 ms</td><td>0.0599 ms</td><td>0.0531 ms</td><td>21.878 ms</td><td>62.5000</td><td>62.5000</td><td>62.5000</td><td>9.72 MB</td>
+</tr><tr><td>&#39;Brotli - Decompression&#39;</td><td>Data/dickens</td><td>25.110 ms</td><td>0.2169 ms</td><td>0.2029 ms</td><td>25.051 ms</td><td>500.0000</td><td>500.0000</td><td>500.0000</td><td>41.6 MB</td>
+</tr><tr><td>&#39;GZIP - Compression&#39;</td><td>Data/nci</td><td>160.667 ms</td><td>1.1779 ms</td><td>1.0442 ms</td><td>160.411 ms</td><td>-</td><td>-</td><td>-</td><td>10.99 MB</td>
+</tr><tr><td>&#39;Zstd - Compression&#39;</td><td>Data/nci</td><td>52.357 ms</td><td>0.1747 ms</td><td>0.1549 ms</td><td>52.362 ms</td><td>-</td><td>-</td><td>-</td><td>10.63 MB</td>
+</tr><tr><td>&#39;LZ4 - Compression&#39;</td><td>Data/nci</td><td>35.581 ms</td><td>0.1639 ms</td><td>0.1453 ms</td><td>35.537 ms</td><td>-</td><td>-</td><td>-</td><td>23.92 MB</td>
+</tr><tr><td>&#39;Snappy - Compression&#39;</td><td>Data/nci</td><td>45.471 ms</td><td>0.8872 ms</td><td>1.0562 ms</td><td>45.130 ms</td><td>2583.3333</td><td>-</td><td>-</td><td>21.87 MB</td>
+</tr><tr><td>&#39;Brotli - Compression&#39;</td><td>Data/nci</td><td>118.518 ms</td><td>2.0162 ms</td><td>2.2410 ms</td><td>118.096 ms</td><td>-</td><td>-</td><td>-</td><td>10.45 MB</td>
+</tr><tr><td>&#39;GZIP - Decompression&#39;</td><td>Data/nci</td><td>33.064 ms</td><td>0.3272 ms</td><td>0.2732 ms</td><td>33.097 ms</td><td>375.0000</td><td>375.0000</td><td>375.0000</td><td>95.87 MB</td>
+</tr><tr><td>&#39;Zstd - Decompression&#39;</td><td>Data/nci</td><td>27.956 ms</td><td>0.2833 ms</td><td>0.2511 ms</td><td>27.931 ms</td><td>437.5000</td><td>437.5000</td><td>437.5000</td><td>95.87 MB</td>
+</tr><tr><td>&#39;LZ4 - Decompression&#39;</td><td>Data/nci</td><td>25.411 ms</td><td>0.1861 ms</td><td>0.1453 ms</td><td>25.403 ms</td><td>437.5000</td><td>437.5000</td><td>437.5000</td><td>95.88 MB</td>
+</tr><tr><td>&#39;Snappy - Decompression&#39;</td><td>Data/nci</td><td>21.859 ms</td><td>0.1879 ms</td><td>0.1666 ms</td><td>21.785 ms</td><td>125.0000</td><td>125.0000</td><td>125.0000</td><td>32 MB</td>
+</tr><tr><td>&#39;Brotli - Decompression&#39;</td><td>Data/nci</td><td>31.526 ms</td><td>0.5349 ms</td><td>0.4467 ms</td><td>31.557 ms</td><td>500.0000</td><td>500.0000</td><td>500.0000</td><td>95.87 MB</td>
+</tr><tr><td>&#39;GZIP - Compression&#39;</td><td>Data/reymont</td><td>98.993 ms</td><td>0.3745 ms</td><td>0.2924 ms</td><td>98.986 ms</td><td>-</td><td>-</td><td>-</td><td>5.78 MB</td>
+</tr><tr><td>&#39;Zstd - Compression&#39;</td><td>Data/reymont</td><td>29.122 ms</td><td>0.5658 ms</td><td>0.5557 ms</td><td>28.968 ms</td><td>62.5000</td><td>62.5000</td><td>62.5000</td><td>5.75 MB</td>
+</tr><tr><td>&#39;LZ4 - Compression&#39;</td><td>Data/reymont</td><td>19.343 ms</td><td>0.1618 ms</td><td>0.1263 ms</td><td>19.378 ms</td><td>312.5000</td><td>312.5000</td><td>312.5000</td><td>10.79 MB</td>
+</tr><tr><td>&#39;Snappy - Compression&#39;</td><td>Data/reymont</td><td>23.953 ms</td><td>0.2850 ms</td><td>0.2666 ms</td><td>23.971 ms</td><td>531.2500</td><td>31.2500</td><td>31.2500</td><td>6.27 MB</td>
+</tr><tr><td>&#39;Brotli - Compression&#39;</td><td>Data/reymont</td><td>59.035 ms</td><td>0.3398 ms</td><td>0.3178 ms</td><td>59.116 ms</td><td>-</td><td>-</td><td>-</td><td>5.62 MB</td>
+</tr><tr><td>&#39;GZIP - Decompression&#39;</td><td>Data/reymont</td><td>13.773 ms</td><td>0.0502 ms</td><td>0.0445 ms</td><td>13.774 ms</td><td>500.0000</td><td>500.0000</td><td>500.0000</td><td>22.2 MB</td>
+</tr><tr><td>&#39;Zstd - Decompression&#39;</td><td>Data/reymont</td><td>9.831 ms</td><td>0.1110 ms</td><td>0.0984 ms</td><td>9.838 ms</td><td>359.3750</td><td>359.3750</td><td>359.3750</td><td>22.2 MB</td>
+</tr><tr><td>&#39;LZ4 - Decompression&#39;</td><td>Data/reymont</td><td>6.629 ms</td><td>0.0799 ms</td><td>0.0747 ms</td><td>6.654 ms</td><td>359.3750</td><td>359.3750</td><td>359.3750</td><td>22.2 MB</td>
+</tr><tr><td>&#39;Snappy - Decompression&#39;</td><td>Data/reymont</td><td>12.736 ms</td><td>0.1170 ms</td><td>0.1037 ms</td><td>12.712 ms</td><td>109.3750</td><td>109.3750</td><td>109.3750</td><td>6.32 MB</td>
+</tr><tr><td>&#39;Brotli - Decompression&#39;</td><td>Data/reymont</td><td>13.530 ms</td><td>0.0918 ms</td><td>0.0814 ms</td><td>13.524 ms</td><td>359.3750</td><td>359.3750</td><td>359.3750</td><td>22.2 MB</td>
 </tr></tbody></table>
 </body>
 </html>
