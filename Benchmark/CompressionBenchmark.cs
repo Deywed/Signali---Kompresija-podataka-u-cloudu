@@ -1,8 +1,7 @@
-using System;
-using System.IO;
 using BenchmarkDotNet.Attributes;
 using CompressionBenchmark.Abstractions;
 using CompressionBenchmark.Strategies;
+using CompressionBenchmark.Utils;
 
 namespace CompressionBenchmark.Benchmarks
 {
@@ -35,13 +34,15 @@ namespace CompressionBenchmark.Benchmarks
         [GlobalSetup]
         public void Setup()
         {
-            // 2. Putanja se sada dinamički menja u zavisnosti od toga koji fajl je trenutno na redu
-            if (!File.Exists(FileName))
+            // 2. Putanja se robustno razrešava (radi i iz IDE-a i iz generisanog
+            //    BenchmarkDotNet procesa), nezavisno od trenutnog working direktorijuma.
+            string path = DataLocator.ResolveDataFile(FileName);
+            if (!File.Exists(path))
             {
-                throw new FileNotFoundException($"Fajl nije pronađen na lokaciji: {FileName}. Proveri da li je u Data folderu.");
+                throw new FileNotFoundException($"Fajl nije pronađen na lokaciji: {path}. Proveri da li je u Data folderu.");
             }
 
-            _testData = File.ReadAllBytes(FileName);
+            _testData = File.ReadAllBytes(path);
 
             // Priprema kompresovanih nizova bajtova za trenutno aktivni fajl
             _gzipCompressed = _gzip.Compress(_testData);
@@ -49,6 +50,25 @@ namespace CompressionBenchmark.Benchmarks
             _lz4Compressed = _lz4.Compress(_testData);
             _snappyCompressed = _snappy.Compress(_testData);
             _brotliCompressed = _brotli.Compress(_testData);
+
+            // Validacija korektnosti: dekompresovani podaci moraju biti identični
+            // originalu. Ako neki algoritam pokvari podatke, test puca odmah u Setup-u
+            // umesto da merimo brzinu nečega što ne radi ispravno.
+            VerifyRoundTrip(_gzip, _gzipCompressed);
+            VerifyRoundTrip(_zstd, _zstdCompressed);
+            VerifyRoundTrip(_lz4, _lz4Compressed);
+            VerifyRoundTrip(_snappy, _snappyCompressed);
+            VerifyRoundTrip(_brotli, _brotliCompressed);
+        }
+
+        private void VerifyRoundTrip(ICompressionStrategy strategy, byte[] compressed)
+        {
+            byte[] restored = strategy.Decompress(compressed);
+            if (!restored.AsSpan().SequenceEqual(_testData))
+            {
+                throw new InvalidOperationException(
+                    $"Round-trip provera nije uspela za {strategy.Name}: dekompresovani podaci se razlikuju od originala.");
+            }
         }
 
         // --- BENCHMARK TESTOVI ZA KOMPRESIJU ---

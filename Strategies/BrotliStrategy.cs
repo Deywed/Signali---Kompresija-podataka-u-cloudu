@@ -1,4 +1,3 @@
-using System.IO;
 using System.IO.Compression;
 using CompressionBenchmark.Abstractions;
 
@@ -6,7 +5,8 @@ namespace CompressionBenchmark.Strategies
 {
     public class BrotliStrategy : ICompressionStrategy
     {
-        public string Name => "Brotli";
+        // CompressionLevel.Optimal: najjača kompresija, izuzetno spor rad.
+        public string Name => "Brotli (Optimal)";
 
         public byte[] Compress(byte[] data)
         {

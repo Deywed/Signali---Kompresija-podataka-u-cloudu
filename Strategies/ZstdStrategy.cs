@@ -1,4 +1,3 @@
-using System.IO;
 using ZstdSharp; // Novi, moderni namespace
 using CompressionBenchmark.Abstractions;
 
@@ -6,7 +5,8 @@ namespace CompressionBenchmark.Strategies
 {
     public class ZstdStrategy : ICompressionStrategy
     {
-        public string Name => "Zstandard (Zstd)";
+        // Zstd nivo 3 je standardni default (balans brzine i odnosa kompresije).
+        public string Name => $"Zstandard (Level {_compressionLevel})";
         private readonly int _compressionLevel;
 
         public ZstdStrategy(int compressionLevel = 3)
@@ -17,7 +17,7 @@ namespace CompressionBenchmark.Strategies
         public byte[] Compress(byte[] data)
         {
             using var outputStream = new MemoryStream();
-            using (var compressionStream = new CompressionStream(outputStream, _compressionLevel))
+            using (var compressionStream = new CompressionStream(outputStream, _compressionLevel, leaveOpen: true))
             {
                 compressionStream.Write(data, 0, data.Length);
             }

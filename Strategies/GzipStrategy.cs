@@ -1,15 +1,13 @@
-using System;
-using System.Collections.Generic;
 using System.IO.Compression;
-using System.Linq;
-using System.Threading.Tasks;
 using CompressionBenchmark.Abstractions;
 
 namespace CompressionBenchmark.Strategies
 {
     public class GzipStrategy : ICompressionStrategy
     {
-        public string Name => "Gzip";
+        // GZipStream(.., CompressionMode.Compress) interno koristi
+        // CompressionLevel.Optimal (najjača kompresija, sporiji rad).
+        public string Name => "Gzip (Optimal)";
 
         public byte[] Compress(byte[] data)
         {

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Text;
 using System.Collections.Generic;
@@ -13,35 +13,34 @@ namespace CompressionBenchmark
 {
     class Program
     {
+        // Simulirana razmera za finansijsku procenu: pretpostavljamo da u cloudu
+        // čuvamo/prenosimo 10.000 ovakvih fajlova.
+        private const long ScaleFactor = 10_000L;
+        private const double BytesInGigabyte = 1073741824.0;
+
+        // Korpus koji analiziramo (isti fajlovi kao u benchmark-u).
+        private static readonly string[] CorpusFiles = { "dickens", "nci", "reymont" };
+
         static void Main(string[] args)
         {
-            // 1. POKRETANJE BENCHMARK-A (Ovo ostaje za merenje CPU i RAM-a)
+            // 1. POKRETANJE BENCHMARK-A (merenje vremena izvršavanja i alokacija memorije)
             Console.WriteLine("Pokretanje BenchmarkDotNet-a...");
             BenchmarkRunner.Run<CompressionPerformanceBenchmark>();
 
             Console.WriteLine("\n--- Benchmark završen. Pokretanje finansijske analize... ---\n");
 
-            // 2. FINANSIJSKA ANALIZA (Čitanje fajla i proračun ušteda)
-            // Koristimo istu logiku za pronalaženje Data foldera kao u Setup-u
-            string currentDir = AppDomain.CurrentDomain.BaseDirectory;
-            while (!Directory.Exists(Path.Combine(currentDir, "Data")))
+            // 2. FINANSIJSKA ANALIZA (čitanje fajlova i proračun ušteda)
+            string root;
+            try
             {
-                var parent = Directory.GetParent(currentDir);
-                if (parent == null) break;
-                currentDir = parent.FullName;
+                root = DataLocator.FindProjectRoot();
             }
-
-            string filePath = Path.Combine(currentDir, "Data", "dickens");
-            if (!File.Exists(filePath))
+            catch (DirectoryNotFoundException ex)
             {
-                Console.WriteLine($"Greška: Fajl {filePath} nije pronađen za finansijsku analizu.");
+                Console.WriteLine($"Greška: {ex.Message}");
                 return;
             }
 
-            byte[] originalBytes = File.ReadAllBytes(filePath);
-            long totalOriginalBytes = originalBytes.Length * 10000L; // Simulacija 10,000 transfera/fajlova
-
-            // Lista svih strategija kroz koje ćemo proći petljom
             var strategies = new List<ICompressionStrategy>
             {
                 new GzipStrategy(),
@@ -51,59 +50,74 @@ namespace CompressionBenchmark
                 new BrotliStrategy()
             };
 
-            // StringBuilder nam služi da sakupimo sav tekst pre upisa u fajl
             StringBuilder reportBuilder = new StringBuilder();
 
-            // Zaglavlje izveštaja
             reportBuilder.AppendLine("=============================================================================");
-            reportBuilder.AppendLine($"        CLOUD COST ESTIMATION REPORT - SILENCIA CORPUS (samba)              ");
-            reportBuilder.AppendLine($"        Simulated Scale: 10,000 Files/Transfers | Duration: 12 Months       ");
+            reportBuilder.AppendLine("        CLOUD COST ESTIMATION REPORT - SILESIA CORPUS                        ");
+            reportBuilder.AppendLine($"        Simulated Scale: {ScaleFactor:N0} Files/Transfers | Duration: 12 Months        ");
             reportBuilder.AppendLine("=============================================================================");
             reportBuilder.AppendLine();
 
-            // Prolazimo kroz svaki algoritam, kompresujemo podatak i računamo troškove
-            foreach (var strategy in strategies)
+            foreach (string corpusFile in CorpusFiles)
             {
-                try
+                string filePath = Path.Combine(root, "Data", corpusFile);
+                if (!File.Exists(filePath))
                 {
-                    byte[] compressedBytes = strategy.Compress(originalBytes);
-                    long totalCompressedBytes = compressedBytes.Length * 10000L;
-
-                    CostEstimationResult estimation = CloudCostCalculator.EstimateCosts(totalOriginalBytes, totalCompressedBytes, months: 12);
-
-                    // Formiranje teksta za trenutni algoritam
-                    string section =
-                        $"ALGORITHM: {strategy.Name}\n" +
-                        $"-------------------------------------------------\n" +
-                        $"  Original Size (Scale):    {(totalOriginalBytes / 1073741824.0):F2} GB\n" +
-                        $"  Compressed Size (Scale):  {(totalCompressedBytes / 1073741824.0):F2} GB\n" +
-                        $"  Original Storage Cost:    ${estimation.OriginalStorageCost:F2}\n" +
-                        $"  Compressed Storage Cost:  ${estimation.CompressedStorageCost:F2}\n" +
-                        $"  Original Transfer Cost:   ${estimation.OriginalTransferCost:F2}\n" +
-                        $"  Compressed Transfer Cost: ${estimation.CompressedTransferCost:F2}\n" +
-                        $"  -----------------------------------------------\n" +
-                        $"  TOTAL ESTIMATED SAVINGS:  ${estimation.TotalSavings:F2}\n" +
-                        $"=============================================================================\n";
-
-                    reportBuilder.AppendLine(section);
+                    reportBuilder.AppendLine($"Upozorenje: Fajl '{corpusFile}' nije pronađen, preskačem.\n");
+                    continue;
                 }
-                catch (Exception ex)
-                {
-                    reportBuilder.AppendLine($"Greška pri obradi algoritma {strategy.Name}: {ex.Message}\n");
-                }
+
+                byte[] originalBytes = File.ReadAllBytes(filePath);
+                AppendCorpusReport(reportBuilder, corpusFile, originalBytes, strategies);
             }
 
             // 3. ISPIS NA EKRAN (Konzola)
             string finalReportText = reportBuilder.ToString();
             Console.WriteLine(finalReportText);
 
-            // 4. UPIS U FAJL
-            // Fajl će se sačuvati u root folderu tvog projekta pod nazivom "cloud_cost_report.txt"
-            string reportPath = Path.Combine(currentDir, "cloud_cost_report.txt");
-
+            // 4. UPIS U FAJL (u root folder projekta)
+            string reportPath = Path.Combine(root, "cloud_cost_report.txt");
             File.WriteAllText(reportPath, finalReportText);
 
             Console.WriteLine($"Izveštaj uspešno sačuvan na lokaciji: {reportPath}");
+        }
+
+        private static void AppendCorpusReport(
+            StringBuilder report,
+            string corpusName,
+            byte[] originalBytes,
+            List<ICompressionStrategy> strategies)
+        {
+            long totalOriginalBytes = originalBytes.Length * ScaleFactor;
+
+            report.AppendLine("=============================================================================");
+            report.AppendLine($"  CORPUS: {corpusName}   (fajl: {originalBytes.Length / (1024.0 * 1024.0):F2} MB, razmera: {totalOriginalBytes / BytesInGigabyte:F2} GB)");
+            report.AppendLine("=============================================================================");
+            report.AppendLine($"  {"ALGORITHM",-22}{"RATIO",8}{"SAVED",9}{"STORAGE $",14}{"TRANSFER $",14}{"SAVINGS $",14}");
+            report.AppendLine("  -------------------------------------------------------------------------");
+
+            foreach (var strategy in strategies)
+            {
+                try
+                {
+                    byte[] compressedBytes = strategy.Compress(originalBytes);
+                    long totalCompressedBytes = compressedBytes.Length * ScaleFactor;
+
+                    double ratio = (double)originalBytes.Length / compressedBytes.Length;
+                    double savedPct = (1.0 - (double)compressedBytes.Length / originalBytes.Length) * 100.0;
+
+                    CostEstimationResult est = CloudCostCalculator.EstimateCosts(totalOriginalBytes, totalCompressedBytes, months: 12);
+
+                    report.AppendLine(
+                        $"  {strategy.Name,-22}{ratio,7:F2}x{savedPct,8:F1}%{est.CompressedStorageCost,14:F2}{est.CompressedTransferCost,14:F2}{est.TotalSavings,14:F2}");
+                }
+                catch (Exception ex)
+                {
+                    report.AppendLine($"  {strategy.Name,-22}  GREŠKA: {ex.Message}");
+                }
+            }
+
+            report.AppendLine();
         }
     }
 }

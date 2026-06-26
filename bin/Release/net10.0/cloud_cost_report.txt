@@ -1,65 +1,38 @@
 =============================================================================
-        CLOUD COST ESTIMATION REPORT - SILENCIA CORPUS (samba)              
-        Simulated Scale: 10,000 Files/Transfers | Duration: 12 Months       
+        CLOUD COST ESTIMATION REPORT - SILESIA CORPUS                        
+        Simulated Scale: 10,000 Files/Transfers | Duration: 12 Months        
 =============================================================================
 
-ALGORITHM: Gzip
--------------------------------------------------
-  Original Size (Scale):    94.92 GB
-  Compressed Size (Scale):  36.28 GB
-  Original Storage Cost:    $26.20
-  Compressed Storage Cost:  $10.01
-  Original Transfer Cost:   $8.54
-  Compressed Transfer Cost: $3.27
-  -----------------------------------------------
-  TOTAL ESTIMATED SAVINGS:  $21.46
 =============================================================================
+  CORPUS: dickens   (fajl: 9.72 MB, razmera: 94.92 GB)
+=============================================================================
+  ALGORITHM                RATIO    SAVED     STORAGE $    TRANSFER $     SAVINGS $
+  -------------------------------------------------------------------------
+  Gzip (Optimal)           2.62x    61.8%         10.01          3.27         21.46
+  Zstandard (Level 3)      2.77x    63.9%          9.45          3.08         22.21
+  LZ4 (Fast)               1.59x    36.9%         16.53          5.39         12.82
+  Snappy                   1.61x    37.8%         16.30          5.31         13.13
+  Brotli (Optimal)         2.97x    66.3%          8.84          2.88         23.03
 
-ALGORITHM: Zstandard (Zstd)
--------------------------------------------------
-  Original Size (Scale):    94.92 GB
-  Compressed Size (Scale):  34.23 GB
-  Original Storage Cost:    $26.20
-  Compressed Storage Cost:  $9.45
-  Original Transfer Cost:   $8.54
-  Compressed Transfer Cost: $3.08
-  -----------------------------------------------
-  TOTAL ESTIMATED SAVINGS:  $22.21
 =============================================================================
+  CORPUS: nci   (fajl: 32.00 MB, razmera: 312.49 GB)
+=============================================================================
+  ALGORITHM                RATIO    SAVED     STORAGE $    TRANSFER $     SAVINGS $
+  -------------------------------------------------------------------------
+  Gzip (Optimal)          10.67x    90.6%          8.08          2.63        103.66
+  Zstandard (Level 3)     11.76x    91.5%          7.33          2.39        104.65
+  LZ4 (Fast)               6.05x    83.5%         14.24          4.65         95.48
+  Snappy                   5.46x    81.7%         15.80          5.15         93.42
+  Brotli (Optimal)        12.71x    92.1%          6.78          2.21        105.38
 
-ALGORITHM: LZ4 (Fast)
--------------------------------------------------
-  Original Size (Scale):    94.92 GB
-  Compressed Size (Scale):  59.88 GB
-  Original Storage Cost:    $26.20
-  Compressed Storage Cost:  $16.53
-  Original Transfer Cost:   $8.54
-  Compressed Transfer Cost: $5.39
-  -----------------------------------------------
-  TOTAL ESTIMATED SAVINGS:  $12.82
 =============================================================================
-
-ALGORITHM: Snappy
--------------------------------------------------
-  Original Size (Scale):    94.92 GB
-  Compressed Size (Scale):  59.05 GB
-  Original Storage Cost:    $26.20
-  Compressed Storage Cost:  $16.30
-  Original Transfer Cost:   $8.54
-  Compressed Transfer Cost: $5.31
-  -----------------------------------------------
-  TOTAL ESTIMATED SAVINGS:  $13.13
+  CORPUS: reymont   (fajl: 6.32 MB, razmera: 61.72 GB)
 =============================================================================
-
-ALGORITHM: Brotli
--------------------------------------------------
-  Original Size (Scale):    94.92 GB
-  Compressed Size (Scale):  32.01 GB
-  Original Storage Cost:    $26.20
-  Compressed Storage Cost:  $8.84
-  Original Transfer Cost:   $8.54
-  Compressed Transfer Cost: $2.88
-  -----------------------------------------------
-  TOTAL ESTIMATED SAVINGS:  $23.03
-=============================================================================
+  ALGORITHM                RATIO    SAVED     STORAGE $    TRANSFER $     SAVINGS $
+  -------------------------------------------------------------------------
+  Gzip (Optimal)           3.53x    71.7%          4.82          1.57         16.19
+  Zstandard (Level 3)      3.40x    70.6%          5.00          1.63         15.96
+  LZ4 (Fast)               2.08x    52.0%          8.18          2.67         11.74
+  Snappy                   2.05x    51.2%          8.32          2.71         11.56
+  Brotli (Optimal)         3.76x    73.4%          4.53          1.48         16.58
 

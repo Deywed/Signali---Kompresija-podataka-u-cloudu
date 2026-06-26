@@ -1,4 +1,3 @@
-using System.IO;
 using K4os.Compression.LZ4;
 using K4os.Compression.LZ4.Streams;
 using CompressionBenchmark.Abstractions;
@@ -7,6 +6,7 @@ namespace CompressionBenchmark.Strategies
 {
     public class Lz4Strategy : ICompressionStrategy
     {
+        // L00_FAST: najbrži nivo, najmanji odnos kompresije.
         public string Name => "LZ4 (Fast)";
 
         public byte[] Compress(byte[] data)
