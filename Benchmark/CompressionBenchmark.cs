@@ -28,7 +28,9 @@ namespace CompressionBenchmark.Benchmarks
 
         // 1. OVDE ZADAJEŠ SVE FAJLOVE KOJE ŽELIŠ DA TESTIRAŠ ODJEDNOM
         // BenchmarkDotNet će pročitati ove nazive i izvršiti testove za svaki ponaosob
-        [Params("Data/dickens", "Data/nci", "Data/reymont")]
+        // Testiramo samo novi fajl (stari su već izmereni).
+        // Da vratiš sve nazad, dodaj: "Data/dickens", "Data/nci", "Data/reymont"
+        [Params("Data/20mb.csv")]
         public string FileName { get; set; } = null!;
 
         [GlobalSetup]

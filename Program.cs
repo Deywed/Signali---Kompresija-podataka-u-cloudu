@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Text;
 using System.Collections.Generic;
@@ -19,7 +19,7 @@ namespace CompressionBenchmark
         private const double BytesInGigabyte = 1073741824.0;
 
         // Korpus koji analiziramo (isti fajlovi kao u benchmark-u).
-        private static readonly string[] CorpusFiles = { "dickens", "nci", "reymont" };
+        private static readonly string[] CorpusFiles = { "dickens", "nci", "reymont", "20mb.csv" };
 
         static void Main(string[] args)
         {

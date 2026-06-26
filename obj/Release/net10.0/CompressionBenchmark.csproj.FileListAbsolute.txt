@@ -1512,3 +1512,4 @@
 /Users/macbook/FAKS/GODINA-4/semestar-8/Signali/CompressionBenchmark/bin/Release/net10.0/Data/samba/testsuite/smbd/se_access_check_utils.h
 /Users/macbook/FAKS/GODINA-4/semestar-8/Signali/CompressionBenchmark/bin/Release/net10.0/Data/samba/testsuite/smbd/sighup.exp
 /Users/macbook/FAKS/GODINA-4/semestar-8/Signali/CompressionBenchmark/bin/Release/net10.0/Data/samba/WHATSNEW.txt
+/Users/macbook/FAKS/GODINA-4/semestar-8/Signali/CompressionBenchmark/bin/Release/net10.0/Data/20mb.csv
