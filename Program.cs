@@ -23,13 +23,12 @@ namespace CompressionBenchmark
 
         static void Main(string[] args)
         {
-            // 1. POKRETANJE BENCHMARK-A (merenje vremena izvršavanja i alokacija memorije)
             Console.WriteLine("Pokretanje BenchmarkDotNet-a...");
             BenchmarkRunner.Run<CompressionPerformanceBenchmark>();
 
             Console.WriteLine("\n--- Benchmark završen. Pokretanje finansijske analize... ---\n");
 
-            // 2. FINANSIJSKA ANALIZA (čitanje fajlova i proračun ušteda)
+            //FINANSIJSKA ANALIZA (čitanje fajlova i proračun ušteda)
             string root;
             try
             {

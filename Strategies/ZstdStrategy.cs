@@ -5,7 +5,6 @@ namespace CompressionBenchmark.Strategies
 {
     public class ZstdStrategy : ICompressionStrategy
     {
-        // Zstd nivo 3 je standardni default (balans brzine i odnosa kompresije).
         public string Name => $"Zstandard (Level {_compressionLevel})";
         private readonly int _compressionLevel;
 

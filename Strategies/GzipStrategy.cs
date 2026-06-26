@@ -5,8 +5,6 @@ namespace CompressionBenchmark.Strategies
 {
     public class GzipStrategy : ICompressionStrategy
     {
-        // GZipStream(.., CompressionMode.Compress) interno koristi
-        // CompressionLevel.Optimal (najjača kompresija, sporiji rad).
         public string Name => "Gzip (Optimal)";
 
         public byte[] Compress(byte[] data)

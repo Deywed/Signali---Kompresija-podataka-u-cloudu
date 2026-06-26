@@ -26,7 +26,6 @@ namespace CompressionBenchmark.Benchmarks
         private readonly ICompressionStrategy _snappy = new SnappyStrategy();
         private readonly ICompressionStrategy _brotli = new BrotliStrategy();
 
-        // 1. OVDE ZADAJEŠ SVE FAJLOVE KOJE ŽELIŠ DA TESTIRAŠ ODJEDNOM
         // BenchmarkDotNet će pročitati ove nazive i izvršiti testove za svaki ponaosob
         // Testiramo samo novi fajl (stari su već izmereni).
         // Da vratiš sve nazad, dodaj: "Data/dickens", "Data/nci", "Data/reymont"
@@ -36,7 +35,6 @@ namespace CompressionBenchmark.Benchmarks
         [GlobalSetup]
         public void Setup()
         {
-            // 2. Putanja se robustno razrešava (radi i iz IDE-a i iz generisanog
             //    BenchmarkDotNet procesa), nezavisno od trenutnog working direktorijuma.
             string path = DataLocator.ResolveDataFile(FileName);
             if (!File.Exists(path))

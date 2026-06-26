@@ -11,7 +11,6 @@ namespace CompressionBenchmark.Strategies
         public byte[] Compress(byte[] data)
         {
             using var outputStream = new MemoryStream();
-            // Koristimo fabrički BrotliStream iz .NET-a
             using (var brotliStream = new BrotliStream(outputStream, CompressionLevel.Optimal, leaveOpen: true))
             {
                 brotliStream.Write(data, 0, data.Length);
